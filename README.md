@@ -10,6 +10,7 @@ javac -d out $(find src -name "*.java")
 java -cp out motor.Main
 ```
 
+
 ## Dónde está cada patrón
 
 | Patrón | Clases principales |

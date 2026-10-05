@@ -1,4 +1,4 @@
-package motor.builder;
+package builder;
 
 public class ReporteEjecutivoBuilder extends BaseDocumentBuilder {
     public ReporteEjecutivoBuilder() {

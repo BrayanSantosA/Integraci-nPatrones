@@ -1,4 +1,4 @@
-package motor.builder;
+package builder;
 
 public class FacturaSimpleBuilder extends BaseDocumentBuilder {
     public FacturaSimpleBuilder() {

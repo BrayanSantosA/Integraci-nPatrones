@@ -1,6 +1,6 @@
-package motor.builder;
+package builder;
 
-import motor.documento.Contenido;
+import documento.Contenido;
 
 public interface DocumentBuilder {
     DocumentBuilder addHeader(String texto);

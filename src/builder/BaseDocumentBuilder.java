@@ -1,12 +1,12 @@
-package motor.builder;
+package builder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import motor.documento.Bloque;
-import motor.documento.Contenido;
-import motor.documento.TipoBloque;
-import motor.flyweight.GlifoFactory;
+import documento.Bloque;
+import documento.Contenido;
+import documento.TipoBloque;
+import flyweight.GlifoFactory;
 
 public abstract class BaseDocumentBuilder implements DocumentBuilder {
     protected String titulo = "Sin título";

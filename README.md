@@ -1,0 +1,43 @@
+# Motor de Documentos Inteligentes
+
+Motor de documentos en Java que integra seis patrones de diseño: Flyweight, Builder, Bridge, Chain of Responsibility, Interpreter y Mediator.
+
+## Estructura
+
+```
+src/motor/
+├── flyweight/     Glifo, Icono, GlifoFactory, Maquetador
+├── documento/     Bloque, Contenido (modelo)
+├── builder/       DocumentBuilder, ReporteEjecutivoBuilder, FacturaSimpleBuilder
+├── bridge/        Documento (Paginado/Continuo) + RenderizadorEngine (PDF/HTML/Markdown)
+├── chain/         ValidadorSintaxis, SanitizadorPalabras, EvaluadorExpresiones
+├── interpreter/   Expresion, terminales, no terminales, parser
+├── mediator/      DocumentEditorMediator y componentes de la consola
+└── Main.java      Demo del flujo completo
+docs/
+├── diagrama-clases.md   UML (Mermaid)
+└── salida-demo.txt      Salida de ejemplo
+```
+
+## Ejecución (JDK 17 o superior)
+
+```bash
+mkdir out
+javac -d out $(find src -name "*.java")
+java -cp out motor.Main
+```
+
+## Dónde está cada patrón
+
+| Patrón | Clases principales |
+|---|---|
+| Flyweight | `GlifoFactory`, `Glifo`, `Icono`, `GlifoColocado` (estado extrínseco) |
+| Builder | `DocumentBuilder`, `BaseDocumentBuilder`, `ReporteEjecutivoBuilder`, `FacturaSimpleBuilder` |
+| Bridge | `Documento` / `DocumentoPaginado` / `DocumentoContinuo` ↔ `RenderizadorEngine` y sus implementaciones |
+| Chain of Responsibility | `ProcesadorHandler` y tres manejadores |
+| Interpreter | `Expresion`, `ExpresionTerminal`, `ExpresionNoTerminal`, `ExpresionParser` |
+| Mediator | `DocumentEditorMediator` y cuatro componentes |
+
+## Demo
+
+`Main` ejecuta: configuración vía Mediator → construcción con Builder y Flyweights → cadena de procesamiento → evaluación de `#{PRECIO_BASE * 1.19 - DESCUENTO}` → exportación en PDF, HTML y Markdown. Un cuarto caso muestra la interrupción de la cadena ante un marcador corrupto.
